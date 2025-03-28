@@ -1,0 +1,368 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPyfYvwWssNlqVjpd1kVkKq",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/man123-web/Main-flow-tasks/blob/main/Week%204%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "CkaS8jt7_nfe",
+        "outputId": "fd8f681d-45d0-4ef8-f4a8-d0d621e3c74c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The missing number is: 3\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "def find_missing_number(arr):\n",
+        "    n = len(arr) + 1  # Since one number is missing\n",
+        "    expected_sum = n * (n + 1) // 2\n",
+        "    actual_sum = sum(arr)\n",
+        "    return expected_sum - actual_sum\n",
+        "\n",
+        "# Example usage\n",
+        "arr = [1, 2, 4, 5, 6]  # Missing number is 3\n",
+        "missing_number = find_missing_number(arr)\n",
+        "print(f\"The missing number is: {missing_number}\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "def is_balanced_parentheses(s):\n",
+        "    stack = []\n",
+        "    parentheses_map = {')': '(', '}': '{', ']': '['}\n",
+        "\n",
+        "    for char in s:\n",
+        "        if char in parentheses_map.values():\n",
+        "            stack.append(char)\n",
+        "        elif char in parentheses_map.keys():\n",
+        "            if not stack or stack.pop() != parentheses_map[char]:\n",
+        "                return False\n",
+        "    return len(stack) == 0\n",
+        "\n",
+        "# Example usage\n",
+        "s = \"{[()()]}\"\n",
+        "result = is_balanced_parentheses(s)\n",
+        "print(f\"Is the string '{s}' balanced? {result}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NeRL-rWY_sfU",
+        "outputId": "3aa2d99b-53a6-44d5-cf5f-ab73c6d7fc0c"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Is the string '{[()()]}' balanced? True\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "def longest_word(sentence):\n",
+        "    words = sentence.split()\n",
+        "    longest = max(words, key=len)\n",
+        "    return longest\n",
+        "\n",
+        "# Example usage\n",
+        "sentence = \"The quick brown fox jumped over the lazy dog\"\n",
+        "longest = longest_word(sentence)\n",
+        "print(f\"The longest word is: '{longest}'\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pMgg_YLy_xe1",
+        "outputId": "8734cdbd-4cf8-42f0-a1b1-b781ed0a722f"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The longest word is: 'jumped'\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def count_words(sentence):\n",
+        "    words = sentence.split()\n",
+        "    return len(words)\n",
+        "\n",
+        "# Example usage\n",
+        "sentence = \"The quick brown fox jumped over the lazy dog\"\n",
+        "word_count = count_words(sentence)\n",
+        "print(f\"The number of words in the sentence is: {word_count}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0ehq8EKl_3gs",
+        "outputId": "78712504-931c-42d6-f51a-852d0cbb9354"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "The number of words in the sentence is: 9\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def is_pythagorean_triplet(a, b, c):\n",
+        "    # Sort the numbers to ensure the largest is last\n",
+        "    x, y, z = sorted([a, b, c])\n",
+        "    return x**2 + y**2 == z**2\n",
+        "\n",
+        "# Example usage\n",
+        "a, b, c = 3, 4, 5\n",
+        "result = is_pythagorean_triplet(a, b, c)\n",
+        "print(f\"Do {a}, {b}, and {c} form a Pythagorean triplet? {result}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3BwKNOli_6i3",
+        "outputId": "17d0f9d3-613c-43b9-9c5a-55ee393a5601"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Do 3, 4, and 5 form a Pythagorean triplet? True\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "def bubble_sort(arr):\n",
+        "    n = len(arr)\n",
+        "    for i in range(n):\n",
+        "        # Track if a swap was made\n",
+        "        swapped = False\n",
+        "        for j in range(0, n - i - 1):\n",
+        "            if arr[j] > arr[j + 1]:\n",
+        "                # Swap if the element found is greater than the next element\n",
+        "                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n",
+        "                swapped = True\n",
+        "        # If no two elements were swapped, the array is sorted\n",
+        "        if not swapped:\n",
+        "            break\n",
+        "    return arr\n",
+        "\n",
+        "# Example usage\n",
+        "arr = [64, 34, 25, 12, 22, 11, 90]\n",
+        "sorted_arr = bubble_sort(arr)\n",
+        "print(\"Sorted array:\", sorted_arr)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "hHNafCo6_7XC",
+        "outputId": "5ab49342-ae07-41ae-d369-3d09fc59450e"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Sorted array: [11, 12, 22, 25, 34, 64, 90]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def binary_search(arr, target):\n",
+        "    left, right = 0, len(arr) - 1\n",
+        "    while left <= right:\n",
+        "        mid = left + (right - left) // 2\n",
+        "        if arr[mid] == target:\n",
+        "            return mid  # Target found\n",
+        "        elif arr[mid] < target:\n",
+        "            left = mid + 1  # Search in the right half\n",
+        "        else:\n",
+        "            right = mid - 1  # Search in the left half\n",
+        "    return -1  # Target not found\n",
+        "\n",
+        "# Example usage\n",
+        "sorted_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n",
+        "target = 5\n",
+        "index = binary_search(sorted_arr, target)\n",
+        "print(f\"Index of {target} is: {index}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ljDmeIlsAJzX",
+        "outputId": "94bf8703-ca73-40ad-c796-69d2012df6b7"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Index of 5 is: 4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def find_subarray_with_sum(arr, target_sum):\n",
+        "    current_sum = 0\n",
+        "    start_index = 0\n",
+        "\n",
+        "    for end_index in range(len(arr)):\n",
+        "        current_sum += arr[end_index]\n",
+        "\n",
+        "        # Shrink the window as long as the current sum exceeds the target\n",
+        "        while current_sum > target_sum and start_index <= end_index:\n",
+        "            current_sum -= arr[start_index]\n",
+        "            start_index += 1\n",
+        "\n",
+        "        if current_sum == target_sum:\n",
+        "            return (start_index, end_index)  # Return the indices of the subarray\n",
+        "\n",
+        "    return -1  # No subarray found\n",
+        "\n",
+        "# Example usage\n",
+        "arr = [1, 2, 3, 7, 5]\n",
+        "target_sum = 12\n",
+        "result = find_subarray_with_sum(arr, target_sum)\n",
+        "print(f\"Subarray with sum {target_sum} found at indices: {result}\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_2XF8S_VALDS",
+        "outputId": "3aad1e7c-e37e-4175-9f71-50eb7b0f30a6"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Subarray with sum 12 found at indices: (1, 3)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from collections import Counter\n",
+        "\n",
+        "def analyze_logs(file_path):\n",
+        "    ip_counter = Counter()\n",
+        "    response_code_counter = Counter()\n",
+        "    url_counter = Counter()\n",
+        "\n",
+        "    with open(file_path, 'r') as file:\n",
+        "        for line in file:\n",
+        "            parts = line.split()\n",
+        "            if len(parts) < 9:  # Adjust based on log format\n",
+        "                continue\n",
+        "\n",
+        "            ip = parts[0]  # Assuming the first part is the IP address\n",
+        "            response_code = parts[8]  # Assuming the response code is the 9th part\n",
+        "            url = parts[6]  # Assuming the URL is the 7th part\n",
+        "\n",
+        "            ip_counter[ip] += 1\n",
+        "            response_code_counter[response_code] += 1\n",
+        "            url_counter[url] += 1\n",
+        "\n",
+        "    # Display the most common IP addresses\n",
+        "    print(\"Most common IP addresses:\")\n",
+        "    for ip, count in ip_counter.most_common(5):\n",
+        "        print(f\"{ip}: {count} times\")\n",
+        "\n",
+        "    # Display the most common response codes\n",
+        "    print(\"\\nMost common response codes:\")\n",
+        "    for code, count in response_code_counter.most_common(5):\n",
+        "        print(f\"{code}: {count} times\")\n",
+        "\n",
+        "    # Display the most accessed URLs\n",
+        "    print(\"\\nMost accessed URLs:\")\n",
+        "    for url, count in url_counter.most_common(5):\n",
+        "        print(f\"{url}: {count} times\")\n",
+        "\n",
+        "# Example usage\n",
+        "# analyze_logs('path_to_log_file.log')  # Uncomment and provide the path to your log file"
+      ],
+      "metadata": {
+        "id": "8-4RCguHAPuG"
+      },
+      "execution_count": 9,
+      "outputs": []
+    }
+  ]
+}
