@@ -1,0 +1,460 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMQ1gJEMRuSQsIMXAHZJ98z",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/man123-web/Main-flow-tasks/blob/main/Main%20flow%20task5\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "0uHNY8InndmU",
+        "outputId": "4cb3ea22-a5d2-412a-a0de-2b9a0ff74b32"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['abc', 'acb', 'bac', 'bca', 'cab', 'cba']\n"
+          ]
+        }
+      ],
+      "source": [
+        "def permute(s):\n",
+        "    if len(s) == 1:\n",
+        "        return [s]\n",
+        "\n",
+        "    permutations = []\n",
+        "    for i, char in enumerate(s):\n",
+        "        for perm in permute(s[:i] + s[i+1:]):\n",
+        "            permutations.append(char + perm)\n",
+        "\n",
+        "    return permutations\n",
+        "\n",
+        "# Example usage\n",
+        "input_string = \"abc\"\n",
+        "print(permute(input_string))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import itertools\n",
+        "\n",
+        "def permute(s):\n",
+        "    return [''.join(p) for p in itertools.permutations(s)]\n",
+        "\n",
+        "# Example usage\n",
+        "input_string = \"abc\"\n",
+        "print(permute(input_string))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "94eusLrIoXRv",
+        "outputId": "6c0acb77-d907-4ec1-ee4c-59e0cbadc58d"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['abc', 'acb', 'bac', 'bca', 'cab', 'cba']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def fibonacci(n):\n",
+        "    if n <= 0:\n",
+        "        return 0\n",
+        "    elif n == 1:\n",
+        "        return 1\n",
+        "\n",
+        "    fib = [0] * (n + 1)\n",
+        "    fib[1] = 1\n",
+        "\n",
+        "    for i in range(2, n + 1):\n",
+        "        fib[i] = fib[i - 1] + fib[i - 2]\n",
+        "\n",
+        "    return fib[n]\n",
+        "\n",
+        "# Example usage\n",
+        "n = 10\n",
+        "print(fibonacci(n))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZbDEHSkdoaOw",
+        "outputId": "5e493ab1-28fa-4c54-ca0c-a833e927dcaa"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "55\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from collections import Counter\n",
+        "\n",
+        "def find_duplicates(lst):\n",
+        "    counts = Counter(lst)\n",
+        "    return [item for item, count in counts.items() if count > 1]\n",
+        "\n",
+        "# Example usage\n",
+        "input_list = [1, 2, 3, 2, 4, 5, 1]\n",
+        "print(find_duplicates(input_list))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5CDgKUmzof7U",
+        "outputId": "a2c44360-ea18-47d9-ba0f-231b10616be5"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[1, 2]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def length_of_lis(nums):\n",
+        "    if not nums:\n",
+        "        return 0\n",
+        "\n",
+        "    dp = [1] * len(nums)\n",
+        "\n",
+        "    for i in range(1, len(nums)):\n",
+        "        for j in range(i):\n",
+        "            if nums[i] > nums[j]:\n",
+        "                dp[i] = max(dp[i], dp[j] + 1)\n",
+        "\n",
+        "    return max(dp)\n",
+        "\n",
+        "# Example usage\n",
+        "input_list = [10, 9, 2, 5, 3, 7, 101, 18]\n",
+        "print(length_of_lis(input_list))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "hasiBbyaolIn",
+        "outputId": "7ad16509-8a40-4544-d2e5-f4ac69eee54c"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import heapq\n",
+        "\n",
+        "def find_k_largest(nums, k):\n",
+        "    return heapq.nlargest(k, nums)\n",
+        "\n",
+        "# Example usage\n",
+        "input_list = [3, 1, 4, 1, 5, 9, 2, 6, 5]\n",
+        "k = 3\n",
+        "print(find_k_largest(input_list, k))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "f3dkFMfWomsn",
+        "outputId": "ecc8e780-3ecf-4806-ef33-c7f4a96f0203"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[9, 6, 5]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def rotate_matrix(matrix):\n",
+        "    # Transpose the matrix\n",
+        "    n = len(matrix)\n",
+        "    for i in range(n):\n",
+        "        for j in range(i, n):\n",
+        "            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]\n",
+        "\n",
+        "    # Reverse each row\n",
+        "    for i in range(n):\n",
+        "        matrix[i].reverse()\n",
+        "\n",
+        "    return matrix\n",
+        "\n",
+        "# Example usage\n",
+        "input_matrix = [\n",
+        "    [1, 2, 3],\n",
+        "    [4, 5, 6],\n",
+        "    [7, 8, 9]\n",
+        "]\n",
+        "\n",
+        "rotated_matrix = rotate_matrix(input_matrix)\n",
+        "for row in rotated_matrix:\n",
+        "    print(row)\n",
+        ""
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "FZg07Gg9o-F4",
+        "outputId": "c5b6be1a-e639-466e-a7a6-306dad67ee24"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[7, 4, 1]\n",
+            "[8, 5, 2]\n",
+            "[9, 6, 3]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def is_valid_sudoku(board):\n",
+        "    def is_valid_block(block):\n",
+        "        nums = [num for num in block if num != '.']\n",
+        "        return len(nums) == len(set(nums))\n",
+        "\n",
+        "    # Check rows and columns\n",
+        "    for i in range(9):\n",
+        "        if not is_valid_block(board[i]):  # Check row\n",
+        "            return False\n",
+        "        if not is_valid_block([board[j][i] for j in range(9)]):  # Check column\n",
+        "            return False\n",
+        "\n",
+        "    # Check 3x3 subgrids\n",
+        "    for i in range(3):\n",
+        "        for j in range(3):\n",
+        "            block = [board[x][y] for x in range(i * 3, (i + 1) * 3) for y in range(j * 3, (j + 1) * 3)]\n",
+        "            if not is_valid_block(block):\n",
+        "                return False\n",
+        "\n",
+        "    return True\n",
+        "\n",
+        "# Example usage\n",
+        "sudoku_board = [\n",
+        "    [\"5\", \"3\", \".\", \".\", \"7\", \".\", \".\", \".\", \".\"],\n",
+        "    [\"6\", \".\", \".\", \"1\", \"9\", \"5\", \".\", \".\", \".\"],\n",
+        "    [\".\", \"9\", \"8\", \".\", \".\", \".\", \".\", \"6\", \".\"],\n",
+        "    [\"8\", \".\", \".\", \".\", \"6\", \".\", \".\", \".\", \"3\"],\n",
+        "    [\"4\", \".\", \".\", \"8\", \".\", \"3\", \".\", \".\", \"1\"],\n",
+        "    [\"7\", \".\", \".\", \".\", \"2\", \".\", \".\", \".\", \"6\"],\n",
+        "    [\".\", \"6\", \".\", \".\", \".\", \".\", \"2\", \"8\", \".\"],\n",
+        "    [\".\", \".\", \".\", \"4\", \"1\", \"9\", \".\", \".\", \"5\"],\n",
+        "    [\".\", \".\", \".\", \".\", \"8\", \".\", \".\", \"7\", \"9\"]\n",
+        "]\n",
+        "\n",
+        "print(is_valid_sudoku(sudoku_board))  # Output: True"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "q0bFGbH-o_us",
+        "outputId": "763307cc-a7e2-4f6b-b351-a14568420fc1"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "True\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import random\n",
+        "\n",
+        "class Stock:\n",
+        "    def __init__(self, name, symbol, price):\n",
+        "        self.name = name\n",
+        "        self.symbol = symbol\n",
+        "        self.price = price\n",
+        "\n",
+        "    def update_price(self):\n",
+        "        # Simulate price change\n",
+        "        change = random.uniform(-1, 1)  # Random price change\n",
+        "        self.price = max(0, self.price + change)  # Ensure price doesn't go negative\n",
+        "\n",
+        "class User:\n",
+        "    def __init__(self, username):\n",
+        "        self.username = username\n",
+        "        self.portfolio = {}\n",
+        "\n",
+        "    def buy_stock(self, stock, quantity):\n",
+        "        if stock.symbol in self.portfolio:\n",
+        "            self.portfolio[stock.symbol] += quantity\n",
+        "        else:\n",
+        "            self.portfolio[stock.symbol] = quantity\n",
+        "        print(f\"{self.username} bought {quantity} shares of {stock.name}.\")\n",
+        "\n",
+        "    def sell_stock(self, stock, quantity):\n",
+        "        if stock.symbol in self.portfolio and self.portfolio[stock.symbol] >= quantity:\n",
+        "            self.portfolio[stock.symbol] -= quantity\n",
+        "            if self.portfolio[stock.symbol] == 0:\n",
+        "                del self.portfolio[stock.symbol]\n",
+        "            print(f\"{self.username} sold {quantity} shares of {stock.name}.\")\n",
+        "        else:\n",
+        "            print(f\"{self.username} does not have enough shares of {stock.name} to sell.\")\n",
+        "\n",
+        "    def view_portfolio(self):\n",
+        "        print(f\"{self.username}'s Portfolio:\")\n",
+        "        for symbol, quantity in self.portfolio.items():\n",
+        "            print(f\"{symbol}: {quantity} shares\")\n",
+        "\n",
+        "class Market:\n",
+        "    def __init__(self):\n",
+        "        self.stocks = {}\n",
+        "\n",
+        "    def add_stock(self, stock):\n",
+        "        self.stocks[stock.symbol] = stock\n",
+        "\n",
+        "    def update_stock_prices(self):\n",
+        "        for stock in self.stocks.values():\n",
+        "            stock.update_price()\n",
+        "\n",
+        "    def display_stock_prices(self):\n",
+        "        print(\"Current Stock Prices:\")\n",
+        "        for stock in self.stocks.values():\n",
+        "            print(f\"{stock.name} ({stock.symbol}): ${stock.price:.2f}\")\n",
+        "\n",
+        "# Example usage\n",
+        "if __name__ == \"__main__\":\n",
+        "    # Create a market and add some stocks\n",
+        "    market = Market()\n",
+        "    market.add_stock(Stock(\"Apple\", \"AAPL\", 150.00))\n",
+        "    market.add_stock(Stock(\"Google\", \"GOOGL\", 2800.00))\n",
+        "    market.add_stock(Stock(\"Amazon\", \"AMZN\", 3400.00))\n",
+        "\n",
+        "    # Create a user\n",
+        "    user = User(\"Alice\")\n",
+        "\n",
+        "    # Simulate buying and selling stocks\n",
+        "    user.buy_stock(market.stocks[\"AAPL\"], 10)\n",
+        "    user.buy_stock(market.stocks[\"GOOGL\"], 5)\n",
+        "    user.view_portfolio()\n",
+        "\n",
+        "    # Update stock prices and display them\n",
+        "    market.update_stock_prices()\n",
+        "    market.display_stock_prices()\n",
+        "\n",
+        "    # Simulate selling stocks\n",
+        "    user.sell_stock(market.stocks[\"AAPL\"], 5)\n",
+        "    user.view_portfolio()\n",
+        "\n",
+        "    # Update stock prices again\n",
+        "    market.update_stock_prices()\n",
+        "    market.display_stock_prices()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZtQHHqbLpcnz",
+        "outputId": "5b09cf82-5309-4aba-cf89-8d432594e3bb"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Alice bought 10 shares of Apple.\n",
+            "Alice bought 5 shares of Google.\n",
+            "Alice's Portfolio:\n",
+            "AAPL: 10 shares\n",
+            "GOOGL: 5 shares\n",
+            "Current Stock Prices:\n",
+            "Apple (AAPL): $149.10\n",
+            "Google (GOOGL): $2799.78\n",
+            "Amazon (AMZN): $3399.40\n",
+            "Alice sold 5 shares of Apple.\n",
+            "Alice's Portfolio:\n",
+            "AAPL: 5 shares\n",
+            "GOOGL: 5 shares\n",
+            "Current Stock Prices:\n",
+            "Apple (AAPL): $149.96\n",
+            "Google (GOOGL): $2799.97\n",
+            "Amazon (AMZN): $3399.39\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
